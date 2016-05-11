@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="LinkJanuaryTestSuite" >
+  <test name="LinkJanuaryTest">
+  	<parameter name="browser" value="Chrome" />
+  	<groups>
+	    <run>
+		<include name="linkJanuary" />
+	    </run>
+	</groups>
+    <classes>
+       <class name="com.rosalietripp.demo.sdet.shoestore.test.MonthlyShoesNewlyReleasedTest"></class>  
+    </classes>
+  </test>
+  
+ </suite>
