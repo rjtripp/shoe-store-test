@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="LinkNewReleasesTestSuite">
+  <listeners>
+    <listener class-name="com.rosalietripp.demo.sdet.shoestore.utilities.CustomListener" />
+    <listener class-name="com.rosalietripp.demo.sdet.shoestore.utilities.CustomReporter" />
+  </listeners>
+  
+  <test name="LinksTest">
+  <parameter name="browser" value="Chrome" />
+    <classes>
+       <class name="com.rosalietripp.demo.sdet.shoestore.test.MonthlyShoesNewlyReleasedTest"></class>
+    </classes>
+  </test>
+ </suite>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BrowserInternetExplorerTestSuite">
+  <listeners>
+    <listener class-name="com.rosalietripp.demo.sdet.shoestore.utilities.CustomReporter" />
+  </listeners>
+  
+  <test name="IETestAll">
+  <parameter name="browser" value="IE" />
+  <groups>
+	    <run>
+		<exclude name="linkJanuary" />
+	    </run>
+	</groups>
+    <classes>
+       <class name="com.rosalietripp.demo.sdet.shoestore.test.MonthlyShoesNewlyReleasedTest"></class>
+       <class name="com.rosalietripp.demo.sdet.shoestore.test.SubmitEmailAddrForRemindersTest"></class>
+    </classes>
+  </test>
+ </suite>

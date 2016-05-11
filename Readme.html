@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Shoe Store Test</title>
+</head>
+<body>
+<h1>Overview</h1>
+The purpose of the project is to demonstrate my skills on testing of a web site. 
+
+<h1>Summary of Steps used to develop project</h1>
+<p>This is a high level description of the steps I used to create and test this project.
+<ol>
+	<li> Reviewed requirements.
+	<li> Ensured that Selenium webdriver (http://seleniumhq.org/download) and TestNG (http://testng.org/doc/download.html) were previously installed and ready for use.
+	<li> Using Eclipse, created a new Maven project named SDETevaluationForHD. Maven was used so dependencies can be easily managed.
+	<li> Configured pom.xml file to add required dependencies.
+	<li> Converted project to TestNG to enable testing using TestNG. Right clicked on project in Eclipse, selected <b>TestNG</b>, 
+	selected <b>Convert to TestNG</b>.
+	<li> Downloaded ChromeDriver.exe and IEDriver.exe, placing them in Eclipse project's directory (same location as the pom.xml file).
+	These are needed for enabling testing using the Chrome and InternetExplorer browsers. 
+	<li> Created this Readme.html file and continuously made updates as needed.
+	<li> Wrote java code in the following packages:
+		<ul>
+		<li>com.rosalietripp.demo.sdet.shoestore.pages
+			<dl>
+			<dt>ShoeReleasePage <dd>Class used for interacting with the web pages on behalf of the test classes.
+			</dl>
+		<li>com.rosalietripp.demo.sdet.shoestore.test
+			<dl>
+			<dt>CONFIG <dd>Contains some configuration constants used when testing
+			<dt>MonthlyShoesNewlyReleaseTest <dd>Used for testing the 12 links (January, February, etc.)
+			<dt>SubmitEmailAddrForReminders <dd>Used for testing the submit of email address
+			</dl>
+		<li>com.rosalietripp.demo.sdet.shoestore.utilities
+			<dl>
+			<dt>AssertMessage <dd>Contains the error messages used when testing
+			<dt>CrossBrowserUtility <dd>Used to enable testing using various browsers
+			<dt>CustomListener <dd>Used by TestNG to enable logging
+			<dt>CustomReporter <dd>Used by TestNG to enable reporting
+			<dt>WebElementUtility <dd>Misc methods for working with WebElements
+			</dl>
+		</ul>
+	<li> To enable testing using TestNG, created testng.xml files:
+		<dl>
+			<dt>testng-allRun.xml <dd>For running all tests against the 3 main browsers in parallel.
+			<dt>testng-browserChrome.xml <dd>For running all tests against Chrome browser only.
+			<dt>testng-browserFirefox.xml <dd>For running all tests against Firefox browser only.
+			<dt>testng-browserIE.xml <dd>For running all tests against Internet Explorer browser only.
+			<dt>testng-linkJanuary.xml <dd>For running the January link test. Used when debugging.
+			<dt>testng-linkNewReleases.xml <dd>For running the link  tests against single browser.
+			<dt>testng-submitEmail.xml <dd>For running the submit email reminders tests against single browser.
+		</dl>
+</ol>
+<h1>Running Tests</h1>
+Tests may be run using Eclipse by right clicking on a <b>testng*.xml</b> file, selecting <b>Run As</b>, and then selecting <b>TestNG Suite</b>.
+While tests are running, messages will be written to the console log. That is useful for seeing the progress. 
+<p>When a test is completed, view results by opening the produced <b>index.html</b> file located in <b>test-output</b> folder. Notice the messages written for the failed cases.
+
+
+</body>
+</html>

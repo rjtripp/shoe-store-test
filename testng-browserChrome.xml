@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BrowserChromeTestSuite">
+  <listeners>
+    <listener class-name="com.rosalietripp.demo.sdet.shoestore.utilities.CustomListener" />
+    <listener class-name="com.rosalietripp.demo.sdet.shoestore.utilities.CustomReporter" />
+  </listeners>
+  
+  <test name="ChromeTest">
+  <parameter name="browser" value="Chrome" />
+  	<groups>
+	    <run>
+		<exclude name="linkJanuary" />
+	    </run>
+	</groups>
+    <classes>
+       <class name="com.rosalietripp.demo.sdet.shoestore.test.MonthlyShoesNewlyReleasedTest"></class>
+       <class name="com.rosalietripp.demo.sdet.shoestore.test.SubmitEmailAddrForRemindersTest"></class>
+    </classes>
+  </test>
+ </suite>
