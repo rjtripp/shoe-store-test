@@ -39,6 +39,11 @@ public class SubmitEmailAddrForRemindersTest {
 	private static final String POSITIVE_TEST = "+";
 	private static final String NEGATIVE_TEST = "-";		
 	
+	private static final String REPLY_POS_ACCEPTED = "Thanks! We will notify you of our new shoes at this email: %1s";
+	private static final String REPLY_NEG_NO_EMAIL_ADDR = "Please enter an email address";
+	private static final String REPLY_NEG_INVALID_EMAIL_ADDR = "Invalid email format. Ex. name@example.com";
+	private static final String REPLY_NEG_MISSING_DOMAIN = "Invalid email missing domain. Ex. name@example.com";
+	
 	/**
 	 * This function will execute before each Test tag in testng.xml
 	 * @param browser
@@ -85,6 +90,8 @@ public class SubmitEmailAddrForRemindersTest {
 				,{NEGATIVE_TEST,".tripprosalie@gmail.com."} // case: extraneous . char before @gmail.com				
 				,{NEGATIVE_TEST,"tripprosalie.@gmail..com."} // case: extraneous . char within @gmail.com
 				,{NEGATIVE_TEST,"tripprosalie\\@gmail.com."} // case: \ char prior to @gmail.com
+				
+				,{NEGATIVE_TEST,""} // case: Blank email address
 				};
 	}
 	
@@ -95,7 +102,7 @@ public class SubmitEmailAddrForRemindersTest {
 	public void testSubmitEmailReminder(String testType,String emailAddr) throws Exception {
 		
 		String eMsg;
-		System.out.println(String.format("Running %1s test for submitting email address %2s using %3s",testType,emailAddr,this.browser));
+		System.out.println(String.format("Running %1s test for submitting email address '%2s' using %3s",testType,emailAddr,this.browser));
 				
 		// Connect to URL
 		driver.get(CONFIG.BASE_URL + "/");
@@ -113,9 +120,13 @@ public class SubmitEmailAddrForRemindersTest {
 		String receivedReply = this.objShoeRelease.getSubmitEmailReply();
 		String expectedReply;
 		if (testType.equals(POSITIVE_TEST)) {
-			expectedReply = "Thanks! We will notify you of our new shoes at this email: " + emailAddr;
+			expectedReply = String.format(REPLY_POS_ACCEPTED, emailAddr);
+		} else if (emailAddr.trim().equals("")) {
+			expectedReply = REPLY_NEG_NO_EMAIL_ADDR;
+		} else if (emailAddr.trim().endsWith("@")) {
+			expectedReply = REPLY_NEG_MISSING_DOMAIN;
 		} else {
-			expectedReply = "Invalid email format. Ex. name@example.com";				
+			expectedReply = REPLY_NEG_INVALID_EMAIL_ADDR;				
 		}
 		  
 		eMsg = AssertMessage.MISSING_EMAIL_REMINDER_REPLY;
